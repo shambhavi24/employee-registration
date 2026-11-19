@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyndryl Year End Celebrations 2026</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23EC4029'/><text x='50%' y='68%' font-size='60' font-weight='900' fill='white' text-anchor='middle' font-family='sans-serif'>K</text></svg>">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="brand-logo-badge">
+          <span class="logo-k">K</span>
+        </div>
+        <div class="brand-titles">
+          <div class="brand-eyebrow">KYNDRYL ANNUAL GALA</div>
+          <h1 class="brand-title">Year End Celebrations 2026</h1>
+        </div>
+      </div>
+
+      <nav class="nav-tabs" role="tablist">
+        <button id="tabBtnRegister" class="nav-tab active" data-tab="registerTab" role="tab" aria-selected="true">
+          <span class="nav-icon">📝</span>
+          <span class="nav-text">Employee Registration</span>
+        </button>
+        <button id="tabBtnAdmin" class="nav-tab" data-tab="adminTab" role="tab" aria-selected="false">
+          <span class="nav-icon">🔒</span>
+          <span class="nav-text">Admin Dashboard</span>
+          <span id="badgeAdminRestricted" class="nav-pill pill-restricted">Restricted</span>
+          <span id="badgeAttendanceCounter" class="nav-pill hidden">0 / 0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+
+    <!-- ================= REGISTRATION TAB ================= -->
+    <section id="registerTab" class="tab-pane active" role="tabpanel">
+      <!-- Event Hero Card -->
+      <div class="hero-banner">
+        <div class="hero-content">
+          <span class="event-tag">✨ Official Company Celebration</span>
+          <h2 class="hero-heading">Celebrating Our Journey, Empowering Our Future</h2>
+          <p class="hero-subtext">
+            Join fellow Kyndryls for an unforgettable evening of music, recognitions, gourmet dining, and festive cheer.
+          </p>
+          <div class="event-meta-grid">
+            <div class="meta-item">
+              <span class="meta-icon">📅</span>
+              <div>
+                <strong>Date & Time</strong>
+                <p>Friday, Dec 18, 2026 • 6:30 PM IST</p>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon">📍</span>
+              <div>
+                <strong>Venue</strong>
+                <p>The Grand Pavilion & Meadows, Tech Park</p>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon">🛡️</span>
+              <div>
+                <strong>Safe Transit</strong>
+                <p>Company Shuttles & Carpools Arranged</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Form Container -->
+      <div class="form-container">
+        <div class="form-card">
+          <div class="form-header">
+            <h3>Employee Registration Form</h3>
+            <p>Please enter your official details to confirm your attendance and generate your Digital Entry Pass.</p>
+          </div>
+
+          <!-- Shareable Registration Link Banner -->
+          <div class="share-link-banner">
+            <div class="share-link-content">
+              <span class="share-link-icon">🔗</span>
+              <div class="share-link-info">
+                <span class="share-link-label">Shareable Registration Link:</span>
+                <span id="shareableUrlText" class="share-link-url">http://localhost:8000/register</span>
+              </div>
+            </div>
+            <button type="button" id="btnCopyShareLink" class="btn btn-sm btn-outline share-copy-btn" title="Copy shareable registration link to clipboard">
+              <span id="copyShareIcon">📋</span>
+              <span id="copyShareText">Copy Link</span>
+            </button>
+          </div>
+
+          <form id="registrationForm" novalidate>
+            <!-- Form Grid -->
+            <div class="form-grid">
+              <!-- Full Name -->
+              <div class="input-group">
+                <label for="fullName">
+                  Full Name <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="field-icon">👤</span>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="e.g. Ramesh Kumar"
+                    required
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="field-msg" id="nameMsg"></div>
+              </div>
+
+              <!-- Official Kyndryl Email -->
+              <div class="input-group">
+                <label for="officialEmail">
+                  Official Email <span class="required-star">*</span>
+                  <span class="domain-badge">@kyndryl.com only</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="field-icon">✉️</span>
+                  <input
+                    type="email"
+                    id="officialEmail"
+                    name="officialEmail"
+                    placeholder="e.g. firstname.lastname@kyndryl.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="field-msg" id="emailMsg">Domain validation: must end with @kyndryl.com</div>
+              </div>
+
+              <!-- Mobile Number -->
+              <div class="input-group">
+                <label for="mobileNumber">
+                  Mobile Number <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="field-icon">📱</span>
+                  <input
+                    type="tel"
+                    id="mobileNumber"
+                    name="mobileNumber"
+                    placeholder="e.g. +91 98765 43210"
+                    required
+                  />
+                </div>
+                <div class="field-msg" id="mobileMsg"></div>
+              </div>
+
+              <!-- Emergency Contact -->
+              <div class="input-group">
+                <label for="emergencyContact">
+                  Emergency Contact (Name & Phone) <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="field-icon">🚨</span>
+                  <input
+                    type="text"
+                    id="emergencyContact"
+                    name="emergencyContact"
+                    placeholder="e.g. Anjali Kumar (+91 98765 43219)"
+                    required
+                  />
+                </div>
+                <div class="field-msg" id="emergencyMsg">Person to notify in case of any medical or travel incident</div>
+              </div>
+            </div>
+
+            <!-- Dietary Preference Selection -->
+            <div class="selection-section">
+              <label class="section-label">
+                Dietary Preference <span class="required-star">*</span>
+              </label>
+              <div class="options-grid diet-grid" role="radiogroup" aria-label="Dietary Preference">
+                <label class="option-card">
+                  <input type="radio" name="dietaryPref" value="Vegetarian" checked />
+                  <div class="card-box">
+                    <span class="opt-icon">🌱</span>
+                    <span class="opt-title">Vegetarian</span>
+                    <span class="opt-desc">Includes dairy & plant-based gourmet</span>
+                  </div>
+                </label>
+
+                <label class="option-card">
+                  <input type="radio" name="dietaryPref" value="Non-Vegetarian" />
+                  <div class="card-box">
+                    <span class="opt-icon">🍗</span>
+                    <span class="opt-title">Non-Vegetarian</span>
+                    <span class="opt-desc">Poultry, mutton & seafood selections</span>
+                  </div>
+                </label>
+
+                <label class="option-card">
+                  <input type="radio" name="dietaryPref" value="Vegan" />
+                  <div class="card-box">
+                    <span class="opt-icon">🥗</span>
+                    <span class="opt-title">Vegan</span>
+                    <span class="opt-desc">100% plant-based, dairy-free</span>
+                  </div>
+                </label>
+
+                <label class="option-card">
+                  <input type="radio" name="dietaryPref" value="Jain" />
+                  <div class="card-box">
+                    <span class="opt-icon">🌿</span>
+                    <span class="opt-title">Jain Meal</span>
+                    <span class="opt-desc">Without root vegetables, onion or garlic</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Alcohol Preference Selection -->
+            <div class="selection-section">
+              <label class="section-label">
+                Alcohol Preference <span class="required-star">*</span>
+              </label>
+              <div class="options-grid alcohol-grid" role="radiogroup" aria-label="Alcohol Preference">
+                <label class="option-card" id="alcoholNoCard">
+                  <input type="radio" name="alcoholPref" id="alcoholNo" value="No" checked />
+                  <div class="card-box">
+                    <span class="opt-icon">🥤</span>
+                    <span class="opt-title">No Alcohol</span>
+                    <span class="opt-desc">Mocktails, fresh juices, and soft beverages</span>
+                  </div>
+                </label>
+
+                <label class="option-card" id="alcoholYesCard">
+                  <input type="radio" name="alcoholPref" id="alcoholYes" value="Yes" />
+                  <div class="card-box">
+                    <span class="opt-icon">🍷</span>
+                    <span class="opt-title">Consuming Alcohol</span>
+                    <span class="opt-desc">Requires travel mode selection (21+)</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Travel Mode Selection -->
+            <div class="selection-section" id="travelModeSection">
+              <div class="section-label-row">
+                <label class="section-label">
+                  Travel Mode <span id="travelRequiredStar" class="required-star hidden">*</span>
+                </label>
+                <span id="travelStatusBadge" class="travel-status-badge badge-optional">Optional if not drinking</span>
+              </div>
+              <p class="section-hint" id="travelHintText">
+                If you indicate that you will be drinking, selecting an approved mode of travel is mandatory. Self-driving is prohibited.
+              </p>
+              <div class="options-grid travel-grid" role="radiogroup" aria-label="Travel Mode">
+                <label class="option-card" id="travelShuttleCard">
+                  <input type="radio" name="travelMode" value="Kyndryl Shuttle Bus" />
+                  <div class="card-box">
+                    <span class="opt-icon">🚌</span>
+                    <span class="opt-title">Kyndryl Shuttle Bus</span>
+                    <span class="opt-desc">Scheduled round-trip pickups from major hubs</span>
+                  </div>
+                </label>
+
+                <label class="option-card" id="travelCabCard">
+                  <input type="radio" name="travelMode" value="Cab / Carpool" />
+                  <div class="card-box">
+                    <span class="opt-icon">🚕</span>
+                    <span class="opt-title">Cab / Carpool</span>
+                    <span class="opt-desc">Ride share with teammates or app cab</span>
+                  </div>
+                </label>
+
+                <label class="option-card" id="travelPublicCard">
+                  <input type="radio" name="travelMode" value="Public Transport" />
+                  <div class="card-box">
+                    <span class="opt-icon">🚆</span>
+                    <span class="opt-title">Public Transport</span>
+                    <span class="opt-desc">Metro rail or municipal transport</span>
+                  </div>
+                </label>
+
+                <label class="option-card" id="selfDriveCardWrapper">
+                  <input type="radio" name="travelMode" id="travelSelfDrive" value="Self Drive" />
+                  <div class="card-box">
+                    <span class="opt-icon">🚗</span>
+                    <span class="opt-title">Self Drive</span>
+                    <span class="opt-desc">Own car or two-wheeler</span>
+                    <span id="selfDriveProhibitedBadge" class="prohibited-tag hidden">🚫 Prohibited with Alcohol</span>
+                  </div>
+                </label>
+              </div>
+              <div class="field-msg" id="travelModeMsg"></div>
+            </div>
+
+            <!-- Policy Warning Banner (Shown when Drinking is selected or Drinking + Self Drive attempted) -->
+            <div id="safetyWarningBanner" class="safety-banner hidden" role="alert">
+              <div class="safety-banner-icon">⚠️</div>
+              <div class="safety-banner-text">
+                <h4>Kyndryl Safety Compliance Warning: Self-Drive Prohibited</h4>
+                <p>
+                  In accordance with Kyndryl's workplace health and safety rules, <strong>drinking + self-driving is strictly prohibited</strong>.
+                  Please select an approved travel mode (<strong>Kyndryl Shuttle Bus</strong>, <strong>Cab / Carpool</strong>, or <strong>Public Transport</strong>).
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandatory Attendance Confirmation & Terms Acceptance -->
+            <div class="mandatory-agreements-card">
+              <div class="agreements-header">
+                <span class="agreements-badge">Mandatory Declarations</span>
+                <h4>Attendance Confirmation & Terms Acceptance</h4>
+              </div>
+
+              <!-- Confirm Attendance Checkbox -->
+              <div class="checkbox-field">
+                <label class="custom-checkbox" for="confirmAttendance">
+                  <input type="checkbox" id="confirmAttendance" name="confirmAttendance" required />
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label-text">
+                    <span class="checkbox-title">Confirm Attendance <span class="required-star">*</span></span>
+                    <span class="checkbox-desc">I confirm that I will attend the Kyndryl Year End Celebrations 2026 in person.</span>
+                  </span>
+                </label>
+                <div class="field-msg" id="confirmAttendanceMsg"></div>
+              </div>
+
+              <!-- Accept Terms & Conditions Checkbox -->
+              <div class="checkbox-field">
+                <label class="custom-checkbox" for="acceptTerms">
+                  <input type="checkbox" id="acceptTerms" name="acceptTerms" required />
+                  <span class="checkbox-box"></span>
+                  <span class="checkbox-label-text">
+                    <span class="checkbox-title">Accept Event Terms & Conditions <span class="required-star">*</span></span>
+                    <span class="checkbox-desc">I have read and accept the event terms, health & safety regulations (including the strict prohibition of drinking and driving), and Kyndryl workplace code of conduct.</span>
+                  </span>
+                </label>
+                <div class="field-msg" id="acceptTermsMsg"></div>
+              </div>
+            </div>
+
+            <!-- General Alert Box -->
+            <div id="formAlertBox" class="alert-box hidden"></div>
+
+            <!-- Submit Button Area -->
+            <div class="form-actions">
+              <button type="submit" id="btnSubmitRegistration" class="btn btn-primary">
+                <span class="btn-text">Confirm Registration & Generate Pass</span>
+                <span class="btn-spinner hidden"></span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ADMIN DASHBOARD TAB ================= -->
+    <section id="adminTab" class="tab-pane" role="tabpanel">
+      <!-- Restricted Admin Authentication Card (Shown when not authenticated) -->
+      <div id="adminAuthGate" class="admin-auth-container">
+        <div class="admin-auth-card">
+          <div class="auth-icon-bubble">🔒</div>
+          <div class="auth-eyebrow">KYNDRYL EVENT MANAGEMENT</div>
+          <h3>Restricted Administrative Interface</h3>
+          <p>This administrative portal is restricted to authorized Kyndryl event coordinators and check-in personnel. Please authenticate using your administrator passkey to view registrations, analytics, and check-in desks.</p>
+          
+          <form id="adminLoginForm" class="admin-login-form">
+            <div class="input-group">
+              <label for="adminPasskeyInput">Administrator Passkey <span class="required-star">*</span></label>
+              <div class="input-wrapper">
+                <span class="field-icon">🔑</span>
+                <input
+                  type="password"
+                  id="adminPasskeyInput"
+                  placeholder="Enter administrator passkey..."
+                  required
+                  autocomplete="current-password"
+                />
+                <button type="button" id="btnTogglePasskeyVisibility" class="btn-toggle-eye" title="Toggle password visibility">👁️</button>
+              </div>
+            </div>
+            <button type="submit" id="btnAdminLogin" class="btn btn-primary btn-auth-submit">
+              <span>Unlock Admin Interface</span>
+            </button>
+          </form>
+
+          <div id="adminLoginAlert" class="alert-box alert-error hidden"></div>
+
+          <div class="auth-footer-hint">
+            <span>🔒 <strong>Authorized Personnel Only:</strong> Enter the confidential administrator passkey configured for your venue desk.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Dashboard Content (Shown only when authenticated) -->
+      <div id="adminDashboardContent" class="admin-dashboard-content hidden">
+        <!-- Admin Top Header -->
+        <div class="admin-header-row">
+          <div>
+            <div class="admin-session-badge">
+              <span class="status-dot-green"></span>
+              <span>Administrator Session Active</span>
+            </div>
+            <h2 class="admin-title">Celebrations Event Management & Live Desk</h2>
+            <p class="admin-subtitle">Live registration monitoring, real-time attendance check-in, and catering analytics.</p>
+          </div>
+          <div class="admin-actions-bar">
+            <button id="btnClearData" class="btn btn-outline" title="Clear all registration records and start with a clean slate">
+              <span>🗑️ Clear All Data</span>
+            </button>
+            <button id="btnExportCsv" class="btn btn-outline" title="Download roster data as CSV">
+              <span>📥 Export to CSV</span>
+            </button>
+            <button id="btnRefreshStats" class="btn btn-outline">
+              <span>🔄 Refresh</span>
+            </button>
+            <button id="btnLogoutAdmin" class="btn btn-outline btn-logout" title="Exit restricted administrator interface">
+              <span>🔓 Log Out</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Fast Live Check-in & Eligibility Desk -->
+        <div class="quick-checkin-card entrance-desk-card">
+          <div class="checkin-title-group">
+            <span class="checkin-badge">⚡ Entrance Fast Check-In Desk</span>
+            <h3>Attendee Verification & Admittance</h3>
+            <p>Scan ticket QR or type Pass ID (e.g. KYN-2026-1042), official email, phone number, or name to verify eligibility and admit.</p>
+          </div>
+
+          <!-- Single Simple Search / Scan Bar -->
+          <form id="quickCheckinForm" class="checkin-form">
+            <div class="checkin-input-wrapper">
+              <span class="field-icon">🔍</span>
+              <input
+                type="text"
+                id="quickCheckinInput"
+                placeholder="Scan Pass ID (KYN-2026-XXXX), or enter Email, Phone, or Name..."
+                autocomplete="off"
+              />
+            </div>
+            <button type="submit" id="btnQuickCheckin" class="btn btn-primary">
+              <span>Check & Admit</span>
+            </button>
+          </form>
+
+          <!-- Alternative Check Option (Fallback when ticket is lost or phone dead) -->
+          <div class="alt-help-toggle-row">
+            <label class="alt-badge-check">
+              <input type="checkbox" id="altBadgeConfirmed" />
+              <span>Badge Fallback: Verified physical Kyndryl Corporate RFID Badge in person (ticket pass unavailable)</span>
+            </label>
+          </div>
+
+          <!-- Clean, Clear Attendee Eligibility & Admittance Card -->
+          <div id="entranceEligibilityCard" class="entrance-eligibility-card hidden"></div>
+
+          <!-- Check-in Result Alert -->
+          <div id="checkinResultAlert" class="checkin-result-alert hidden"></div>
+        </div>
+
+        <!-- Statistics KPI Cards Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total Registrations</span>
+              <span class="stat-icon-bubble bg-indigo">👥</span>
+            </div>
+            <div class="stat-value" id="statTotalRegistrations">0</div>
+            <div class="stat-footer">Confirmed Kyndryl employees</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Checked-In Attendees</span>
+              <span class="stat-icon-bubble bg-green">✅</span>
+            </div>
+            <div class="stat-value text-green" id="statTotalAttended">0</div>
+            <div class="stat-footer" id="statAttendancePercent">0% attendance rate</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Expected / Remaining</span>
+              <span class="stat-icon-bubble bg-orange">⏳</span>
+            </div>
+            <div class="stat-value text-orange" id="statRemaining">0</div>
+            <div class="stat-footer">Yet to arrive at venue</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Alcohol & Drive Safety</span>
+              <span class="stat-icon-bubble bg-red">🛡️</span>
+            </div>
+            <div class="stat-value text-primary" id="statSafetyRate">100%</div>
+            <div class="stat-footer">Zero policy violations</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Email Confirmations</span>
+              <span class="stat-icon-bubble bg-indigo">✉️</span>
+            </div>
+            <div class="stat-value" id="statEmailsSent">0</div>
+            <div class="stat-footer">100% Dispatched & Verified</div>
+          </div>
+        </div>
+
+        <!-- Analytics Breakdown Sections -->
+        <div class="analytics-row">
+          <!-- Dietary Breakdown -->
+          <div class="analytics-card">
+            <h4>🍽️ Dietary Requirements Breakdown</h4>
+            <p class="card-caption">Catering preparations & meal counters</p>
+            <div class="chart-bars-list" id="dietaryStatsList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Alcohol & Travel Modes -->
+          <div class="analytics-card">
+            <h4>🍸 Beverage & Transport Logistics</h4>
+            <p class="card-caption">Safe commuting & bar capacity planning</p>
+            
+            <div class="split-stats-row">
+              <div class="split-column">
+                <h5>Alcohol Preference</h5>
+                <div id="alcoholStatsList" class="compact-bars"></div>
+              </div>
+              <div class="split-column">
+                <h5>Travel Mode</h5>
+                <div id="travelStatsList" class="compact-bars"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Registrations Data Table Card -->
+        <div class="data-table-card">
+          <div class="table-card-header">
+            <div>
+              <h3>All Registrations & Attendance Roster</h3>
+              <p id="rosterCountText">Showing records</p>
+            </div>
+          </div>
+
+          <!-- Filters Bar (Supporting Name, Email, Dietary, Alcohol, Attendance, Travel) -->
+          <div class="filters-bar">
+            <!-- Global Search Input -->
+            <div class="filter-search-wrap">
+              <span class="search-icon">🔎</span>
+              <input
+                type="text"
+                id="filterSearch"
+                placeholder="Search by keyword, phone, or ticket code..."
+              />
+            </div>
+
+            <!-- Specific Filter: Employee Name -->
+            <div class="filter-input-wrap">
+              <label for="filterName">Name:</label>
+              <input
+                type="text"
+                id="filterName"
+                placeholder="Filter by name..."
+              />
+            </div>
+
+            <!-- Specific Filter: Employee Email -->
+            <div class="filter-input-wrap">
+              <label for="filterEmail">Email:</label>
+              <input
+                type="text"
+                id="filterEmail"
+                placeholder="Filter by email..."
+              />
+            </div>
+
+            <!-- Attendance Filter -->
+            <div class="filter-select-wrap">
+              <label for="filterAttendance">Status:</label>
+              <select id="filterAttendance">
+                <option value="All">All Statuses</option>
+                <option value="Attended">Checked In (Attended)</option>
+                <option value="Not Attended">Not Checked In</option>
+              </select>
+            </div>
+
+            <!-- Dietary Filter -->
+            <div class="filter-select-wrap">
+              <label for="filterDietary">Dietary:</label>
+              <select id="filterDietary">
+                <option value="All">All Diets</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Non-Vegetarian">Non-Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Jain">Jain</option>
+              </select>
+            </div>
+
+            <!-- Alcohol Filter -->
+            <div class="filter-select-wrap">
+              <label for="filterAlcohol">Alcohol:</label>
+              <select id="filterAlcohol">
+                <option value="All">All Preferences</option>
+                <option value="Yes">Yes (Drinking)</option>
+                <option value="No">No (Soft Drinks)</option>
+              </select>
+            </div>
+
+            <!-- Travel Filter -->
+            <div class="filter-select-wrap">
+              <label for="filterTravel">Travel:</label>
+              <select id="filterTravel">
+                <option value="All">All Modes</option>
+                <option value="Kyndryl Shuttle Bus">Kyndryl Shuttle Bus</option>
+                <option value="Cab / Carpool">Cab / Carpool</option>
+                <option value="Public Transport">Public Transport</option>
+                <option value="Self Drive">Self Drive</option>
+              </select>
+            </div>
+
+            <!-- Reset Filters -->
+            <button id="btnResetFilters" class="btn btn-text">
+              <span>Reset</span>
+            </button>
+          </div>
+
+          <!-- Responsive Table Wrapper -->
+          <div class="table-responsive">
+            <table class="roster-table" id="registrationsTable">
+              <thead>
+                <tr>
+                  <th>Ticket ID</th>
+                  <th>Employee Details</th>
+                  <th>Contact & Emergency</th>
+                  <th>Dietary</th>
+                  <th>Alcohol</th>
+                  <th>Travel Mode</th>
+                  <th>Attendance</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="rosterTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Empty State -->
+          <div id="rosterEmptyState" class="empty-state hidden">
+            <div class="empty-icon">📂</div>
+            <h4>No Registrations Found</h4>
+            <p>No matching employee registrations match your filter query.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= PASS / TICKET MODAL ================= -->
+  <div id="passModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button id="btnCloseModal" class="modal-close" aria-label="Close Pass">&times;</button>
+      
+      <!-- Registration Success Confirmation Notice -->
+      <div class="registration-success-header">
+        <div class="success-header-top">
+          <span class="success-badge-icon">🎉</span>
+          <div>
+            <h3>Registration Confirmed! Official Pass Issued</h3>
+            <p id="modalEmailSentNotice">
+              An official confirmation email has been dispatched to <strong id="modalConfirmedEmail">employee@kyndryl.com</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="success-header-actions">
+          <button type="button" id="btnViewSentEmail" class="btn btn-sm btn-outline">
+            <span>✉️ View Confirmation Email</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="ticket-wrapper" id="printableTicket">
+        <!-- Ticket Header -->
+        <div class="ticket-header">
+          <div class="ticket-header-left">
+            <span class="ticket-brand">KYNDRYL GALA 2026</span>
+            <span class="ticket-type-badge">OFFICIAL ENTRY PASS</span>
+          </div>
+          <div class="ticket-pass-id" id="modalTicketCode">KYN-2026-0000</div>
+        </div>
+
+        <!-- Ticket Body -->
+        <div class="ticket-body">
+          <div class="ticket-user-section">
+            <div class="ticket-avatar" id="modalAvatar">K</div>
+            <div class="ticket-user-info">
+              <h3 id="modalName">Employee Name</h3>
+              <p id="modalEmail">employee@kyndryl.com</p>
+              <span id="modalAttendanceBadge" class="status-badge badge-pending">Yet to Check In</span>
+            </div>
+          </div>
+
+          <div class="ticket-details-grid">
+            <div class="detail-cell">
+              <span class="detail-label">Mobile</span>
+              <span class="detail-val" id="modalMobile">+91 00000 00000</span>
+            </div>
+            <div class="detail-cell">
+              <span class="detail-label">Emergency Contact</span>
+              <span class="detail-val" id="modalEmergency">Contact Info</span>
+            </div>
+            <div class="detail-cell">
+              <span class="detail-label">Dietary Preference</span>
+              <span class="detail-val" id="modalDiet">Vegetarian</span>
+            </div>
+            <div class="detail-cell">
+              <span class="detail-label">Alcohol Preference</span>
+              <span class="detail-val" id="modalAlcohol">No</span>
+            </div>
+            <div class="detail-cell">
+              <span class="detail-label">Attendance Confirmed</span>
+              <span class="detail-val" id="modalConfirmedAttendance" style="color: var(--success); font-weight: 700;">✓ Confirmed</span>
+            </div>
+            <div class="detail-cell full-width">
+              <span class="detail-label">Terms & Compliance</span>
+              <span class="detail-val" id="modalAcceptedTerms" style="color: var(--success); font-weight: 700;">✓ Accepted & Compliant</span>
+            </div>
+            <div class="detail-cell full-width">
+              <span class="detail-label">Travel Mode</span>
+              <span class="detail-val" id="modalTravel">Kyndryl Shuttle Bus</span>
+            </div>
+          </div>
+
+          <!-- Information Necessary to Establish Event Entry Eligibility -->
+          <div class="ticket-eligibility-box">
+            <div class="eligibility-title-row">
+              <span class="eligibility-icon">🛡️</span>
+              <h5>Mandatory Event Entry Eligibility Requirements</h5>
+            </div>
+            <ul class="eligibility-list">
+              <li>
+                <strong>Physical Kyndryl Employee Badge:</strong> Mandatory. Present your corporate badge at Gate 1 or 2 matching your registered name and @kyndryl.com email.
+              </li>
+              <li>
+                <strong>Digital Entry Pass ID (<span id="eligibilityTicketCode" class="text-primary font-mono">KYN-2026-XXXX</span>):</strong> Keep this pass ID or QR code handy for rapid desk scanning.
+              </li>
+              <li>
+                <strong>Bar Wristband Age Verification (21+):</strong> If you selected alcohol consumption, bring valid government photo ID for age verification at the bar desk.
+              </li>
+              <li>
+                <strong>Workplace Safe Transit:</strong> Strictly zero tolerance for drinking and driving. Use your registered shuttle bus or cab service.
+              </li>
+            </ul>
+          </div>
+
+          <!-- QR Code Canvas representation -->
+          <div class="ticket-qr-area">
+            <canvas id="ticketQrCanvas" width="130" height="130"></canvas>
+            <div class="qr-instructions">
+              <strong>Scan to Verify Entry</strong>
+              <p>Present this digital pass at the entrance counter for instant check-in badge validation.</p>
+            </div>
+          </div>
+
+          <!-- Event Information Footer -->
+          <div class="ticket-event-info">
+            <div>
+              <strong>Event:</strong> Kyndryl Year End Celebrations 2026
+            </div>
+            <div>
+              <strong>Date:</strong> Friday, December 18, 2026 • 6:30 PM
+            </div>
+            <div>
+              <strong>Location:</strong> The Grand Pavilion & Meadows
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-perforation"></div>
+      </div>
+
+      <!-- Modal Actions -->
+      <div class="modal-actions">
+        <button id="btnPrintTicket" class="btn btn-outline">
+          <span>🖨️ Print Pass</span>
+        </button>
+        <button id="btnSwitchToAdmin" class="btn btn-primary">
+          <span>Go to Admin Dashboard</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= EMAIL CONFIRMATION PREVIEW MODAL ================= -->
+  <div id="emailPreviewModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card email-preview-card">
+      <div class="email-preview-header">
+        <div class="email-meta-group">
+          <div class="email-badge-status">✉️ OFFICIAL CONFIRMATION DISPATCHED</div>
+          <h3 id="emailPreviewSubject">Registration Confirmed: Kyndryl Year End Celebrations 2026</h3>
+          <div class="email-headers-meta">
+            <div><strong>From:</strong> Kyndryl Celebrations Committee &lt;celebrations2026@kyndryl.com&gt;</div>
+            <div><strong>To:</strong> <span id="emailPreviewTo">employee@kyndryl.com</span></div>
+            <div><strong>Date:</strong> <span id="emailPreviewDate">Sent Just Now</span></div>
+            <div><strong>Status:</strong> <span class="badge-delivered">✓ Delivered to Kyndryl Inbox</span></div>
+          </div>
+        </div>
+        <button id="btnCloseEmailModal" class="modal-close" aria-label="Close Email Preview">&times;</button>
+      </div>
+
+      <div class="email-preview-body" id="emailPreviewContent">
+        <!-- Rendered email content iframe / container -->
+      </div>
+
+      <div class="modal-actions">
+        <button id="btnCloseEmailModalBtn" class="btn btn-primary">
+          <span>Close Email Preview</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ATTENDEE DETAILS MODAL (ADMIN) ================= -->
+  <div id="attendeeDetailsModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card attendee-details-card">
+      <button id="btnCloseAttendeeDetails" class="modal-close" aria-label="Close Details">&times;</button>
+      <div class="attendee-details-header">
+        <div class="details-avatar" id="detailAvatar">K</div>
+        <div>
+          <h3 id="detailFullName">Employee Full Name</h3>
+          <p id="detailEmail">employee@kyndryl.com</p>
+          <span id="detailTicketCode" class="pass-code-pill">KYN-2026-0000</span>
+        </div>
+      </div>
+
+      <div class="details-section-grid">
+        <div class="detail-box">
+          <span class="box-label">Mobile Number</span>
+          <span class="box-val" id="detailMobile">+91 00000 00000</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Emergency Contact</span>
+          <span class="box-val" id="detailEmergency">Contact</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Dietary Preference</span>
+          <span class="box-val" id="detailDiet">Vegetarian</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Alcohol Preference</span>
+          <span class="box-val" id="detailAlcohol">No</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Mode of Travel</span>
+          <span class="box-val" id="detailTravel">Kyndryl Shuttle Bus</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Attendance Declaration</span>
+          <span class="box-val text-success">✓ Confirmed In-Person</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Terms & Safety Acceptance</span>
+          <span class="box-val text-success">✓ Accepted & Compliant</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Current Check-In Status</span>
+          <span class="box-val" id="detailAttendanceStatus">Not Checked In</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Verification Method</span>
+          <span class="box-val" id="detailVerificationMethod">PRIMARY_PASS</span>
+        </div>
+        <div class="detail-box">
+          <span class="box-label">Verification Audit Notes</span>
+          <span class="box-val" id="detailVerificationNotes">Standard pass scan</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="btnToggleAttendanceInModal" class="btn btn-primary">
+          <span>Toggle Attendance</span>
+        </button>
+        <button id="btnCloseAttendeeDetailsBtn" class="btn btn-outline">
+          <span>Close</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <p>© 2026 Kyndryl Inc. All rights reserved. • Year End Celebrations 2026 Event Portal</p>
+      <div class="footer-links">
+        <span>Confidential & Internal Kyndryl Use</span>
+        <span>•</span>
+        <span>Safety First Initiative</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
